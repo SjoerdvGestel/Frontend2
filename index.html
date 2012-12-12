@@ -3,21 +3,55 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Backbone.js Web App</title>
+		<title>Threesome Ultimate Frisbee - Game</title>
 		<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/screen.css" />
+        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-		<div id="wrapper">
-			<h1 id="frisbee_league">Frisbee league</h1>
-			<ul id="league"></ul>
-		</div>	
-        
+		<header>
+            <h1><span>League:</span>AMSU - 12</h1>
+            <h1><span>Tournament:</span>Threesome</h1>
+        </header>
 		
-        <script id="tournamentTemplate" type="text/template">
-				<h1><%= name %></h1>
-				<h2>Format: <strong><%= schedulingFormat %></strong></h2>
+		
+		<article>
+            <header>
+                <h1>Pool A - Score Updates - Boomsquad vs. Burning Snow</h1>
+            </header>
+			
+				<table id="gameResult">
+					<tr>
+                        <th>Set</th>
+						<th>Team</th>
+						<th>Result</th>
+						<th>Team</th>
+					</tr>
+				</table>
+
+                <script id="setTableTemplate" type="text/template">
+                    <td><%= set %></td>
+                    <td><%= team1 %></td>
+                    <td><%= team1Score %> - <%= team2Score %></td>
+                    <td><%= team2 %></td>
+                </script>    
+
+
+		</article>
+		
+		<script id="gameHeaderTemplate" type="text/template">
+				<header>
+					<h1>Pool <%= pool %> - Score Updates - <%= team1 %> vs. <%= team2 %></h1>
+				</header>
         </script>
+        <script id="winnerTemplate" type="text/template">
+				<tr>
+                    <td class="winner"><%= nameWinner %></td>
+                    <td><%= winnerSetWins %> - <%= loserSetWins %></td>
+                    <td><%= nameLoser %></td>
+				</tr>
+        </script>
+		
+		
 		
 		<!-- Libraries -->
         <script src="js/libs/jquery-1.7.1.min.js"></script>
@@ -26,6 +60,11 @@
         <script src="js/libs/backbone-min.js"></script>
 
 		<!-- Application -->
-        <script src="js/app/app.js"></script>
+        <script src="js/app/models/Set.js"></script>
+        <script src="js/app/collections/Game.js"></script>
+        <script src="js/app/views/GameSet.js"></script>
+        <script src="js/app/views/GameResult.js"></script>
+
+        <script src="js/app/appGame.js"></script>
     </body>
 </html>

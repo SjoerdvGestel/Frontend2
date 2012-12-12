@@ -21,11 +21,21 @@
 			
 				<table id="gameResult">
 					<tr>
+                        <th>Set</th>
 						<th>Team</th>
 						<th>Result</th>
 						<th>Team</th>
 					</tr>
 				</table>
+
+                <script id="setTableTemplate" type="text/template">
+                    <td><%= set %></td>
+                    <td><%= team1 %></td>
+                    <td><%= team1Score %> - <%= team2Score %></td>
+                    <td><%= team2 %></td>
+                </script>    
+
+
 		</article>
 		
 		<script id="gameHeaderTemplate" type="text/template">
@@ -41,14 +51,7 @@
 				</tr>
         </script>
 		
-		<script id="gameTemplate" type="text/template">
-				<tr>
-                    <td><%= set %></td>
-                    <td><%= team1 %></td>
-                    <td>><%= team1Score %> - <%= team2Score %></td>
-                    <td>><%= team2 %></</td>
-                </tr>
-        </script>
+		
 		
 		<!-- Libraries -->
         <script src="js/libs/jquery-1.7.1.min.js"></script>
@@ -56,7 +59,15 @@
         <script src="js/libs/underscore-min.js"></script>
         <script src="js/libs/backbone-min.js"></script>
 
+        <!-- Data -->
+        <script src="js/app/data/dataset.js"></script>
+
 		<!-- Application -->
+        <script src="js/app/models/Set.js"></script>
+        <script src="js/app/collections/Game.js"></script>
+        <script src="js/app/views/GameSet.js"></script>
+        <script src="js/app/views/GameResult.js"></script>
+
         <script src="js/app/appGame.js"></script>
     </body>
 </html>
