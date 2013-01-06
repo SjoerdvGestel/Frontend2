@@ -58,15 +58,13 @@ FBEE.GameView = Backbone.View.extend({
 			}
 		});
 		if(!inputError){ //Uitvoeren indien er geen inputError gedetecteerd is
-			this.addSetForum.children("input").each(function(i, el) {$(el).val("");});
-			FBEE.gameData.push(newSet);
-			var thisSet = new FBEE.Set(newSet);
-			if(_.indexOf(this.getWinners(), thisSet.attributes.setWinner) === -1) {
-				console.log("a new winner: " + thisSet.attributes.setWinner);
-				this.collection.add(thisSet);
-				this.$el.find("#filter").find("select").remove().end().append(this.createFilterOptions());
-				console.log(this.getWinners());
-			}else{
+			this.addSetForum.children("input").each(function(i, el) {$(el).val("");}); //reset de velden van het input form
+			FBEE.gameData.push(newSet); //voeg de nieuwe set toe aan de gamedata array
+			var thisSet = new FBEE.Set(newSet); //
+			if(_.indexOf(this.getWinners(), thisSet.attributes.setWinner) === -1) { //als de winnaar nog niet voor komt wordt deze toegevoegd aan de filter picker (kan ook een tie zijn)
+				this.collection.add(thisSet); //voeg de nieuwe set toe aan de collection
+				this.$el.find("#filter").find("select").remove().end().append(this.createFilterOptions()); //reset de filter picker
+			}else{// de winnaar is al bekend
 				this.collection.add(thisSet);
 			}
 			this.collection.reset(FBEE.gameData);
@@ -80,7 +78,7 @@ FBEE.GameView = Backbone.View.extend({
 	removeSet: function (model) {
 		console.log("removeSet");
 		var toRemove = model.attributes;
-		delete toRemove["setWinner"]; //extra field dat niet wordt herkent in de isEqual
+		delete toRemove["setWinner"]; //verwijder het attribute setWinner van het object, dit zorgt er voor dat het object overeen komt met de orininele data en kan worden vergeleken in _.isEqual
 
 		_.each(FBEE.gameData, function (item) {
 	        if (_.isEqual(item, toRemove)) {
@@ -90,14 +88,14 @@ FBEE.GameView = Backbone.View.extend({
 		console.log(FBEE.gameData);
 	},
 
-	getWinners: function () {
+	getWinners: function () { //haal uit de collectie alle setWinners
 	     return _.uniq(this.collection.pluck("setWinner"), false, function (type) {
 	     	console.log(type);
 	        return type.toLowerCase();
 	    });
 	},
 
-	createFilterOptions: function () {
+	createFilterOptions: function () { //creeer filteropties: standaardfilter: op sets volgorde. Dynamic filters: set winnaars (waaronder tie)
 	    var filter = this.$el.find("#filter"),
 	    htmlString = $("<select/>", { html: "<option value='sets'>Sets</option>"});
 	    if(this.getWinners().length > 1){
@@ -111,8 +109,8 @@ FBEE.GameView = Backbone.View.extend({
 	    return htmlString;
 	},
 
-	filterByOptions: function () {
-	    if (this.filterType === "sets") {
+	filterByOptions: function () { //voer opgegeven fileroptie uit
+	    if (this.filterType === "sets") { 
 	        this.collection.reset(FBEE.gameData);
 	    }else {
 	        this.collection.reset(FBEE.gameData, { silent: true });
@@ -124,10 +122,8 @@ FBEE.GameView = Backbone.View.extend({
 	    }
 	},
 
-	setFilter: function (e) {
+	setFilter: function (e) { //zet de opgegeven filer en vuur een custom trigger af voor dit event
 	    this.filterType = e.currentTarget.value;
-	    
-		// Trigger custom event handler
 		this.trigger("change:filterType");
 	}
 });

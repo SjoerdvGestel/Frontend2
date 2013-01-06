@@ -1,5 +1,5 @@
 var util = {
-
+	//bereken de winnaar van een set, gelijkspel = tie
 	setWinner: function(team1, team2, teamName1, teamName2){
 		if(team1 > team2){
 			return teamName1;
@@ -9,7 +9,7 @@ var util = {
 			return "Tie";
 		}
 	},
-
+	//compressArray: verwijder lege plekken uit de array (optimize)
 	compressArray: function(original) {
 	 
 		var compressed = [];

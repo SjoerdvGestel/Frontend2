@@ -8,7 +8,7 @@ FBEE.SetView = Backbone.View.extend({
   		"click button#remove": "removeModel"
   	},
 
-
+  	//render de setView
 	render: function() {
 		var tmpl = _.template(this.template);
 
@@ -17,6 +17,7 @@ FBEE.SetView = Backbone.View.extend({
 		return this;
 	},
 
+	//verwijder het geselecteerde model uit view
 	removeModel: function(e){
 		e.preventDefault();
 		console.log("Remove");
