@@ -1,5 +1,8 @@
-var Game = Backbone.Collection.extend({
+FBEE.Game = Backbone.Collection.extend({
 		
-	model: Set,
+	model: FBEE.Set,
 
+	comparator: function(set) {
+        return set.get('set');
+    }
 });

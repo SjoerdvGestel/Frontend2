@@ -1,9 +1,9 @@
-var WinnerView = Backbone.View.extend({
+FBEE.WinnerView = Backbone.View.extend({
 
 	el: $("#gameWinner"),
 
 	initialize: function () {
-	    this.collection = new Game(gameData);
+	    this.collection = new FBEE.Game(FBEE.gameData);
 	    
 	    this.render();
   	},

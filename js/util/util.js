@@ -3,9 +3,10 @@ var util = {
 	setWinner: function(team1, team2, teamName1, teamName2){
 		if(team1 > team2){
 			return teamName1;
-		}
-		else{
+		}else if (team1 < team2){
 			return teamName2;
+		}else{
+			return "Tie";
 		}
 	},
 

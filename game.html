@@ -33,22 +33,40 @@
                     </script>
                 </table>
 
+                <div id="gameContainer">
+                    <nav class="actions">
+                        <ul>
+                            <li id="filter">
+                                <label>Filteren:</label>
+                                
+                            </li>
+                        </ul>
+                    </nav>
+    				<table id="gameResult">
+          				<tr>
+                            <th>Set</th>
+    						<th>Team</th>
+    						<th>Result</th>
+    						<th>Team</th>
+    					</tr>
+    				</table>
+                    <form id="addGameSet" action="#">
+                        <h1>Add a set</h1>
+                        <input id="set" placeholder="0" type="text" maxlength="1" style="text-align:center;">
+                        <input id="team1" placeholder="Team naam 1" type="text">
+                        <input id="team1Score" placeholder="0" maxlength="2" type="text" style="text-align:right;"> - <input id="team2Score" placeholder="0"  maxlength="2" type="text">
+                        <input id="team2" placeholder="Team naam 2" type="text">
+                        <button type="submit" id="addSet">Add</button>
+                    </form>
+                </div>
 
-
-				<table id="gameResult">
-					<tr>
-                        <th>Set</th>
-						<th>Team</th>
-						<th>Result</th>
-						<th>Team</th>
-					</tr>
-				</table>
 
                 <script id="setTableTemplate" type="text/template">
                     <td><%= set %></td>
                     <td><%= team1 %></td>
                     <td><%= team1Score %> - <%= team2Score %></td>
                     <td><%= team2 %></td>
+                    <td><button type="button" id="remove">Remove</button></td>
                 </script>    
 
 
@@ -69,16 +87,14 @@
         <!-- Util -->
         <script src="js/util/util.js"></script>
 
-        <!-- Data -->
-        <script src="js/app/data/dataset.js"></script>
-
 		<!-- Application -->
+        <script src="js/app/app.js"></script>
+        <script src="js/app/data/dataset.js"></script>
         <script src="js/app/models/Set.js"></script>
         <script src="js/app/collections/Game.js"></script>
         <script src="js/app/views/GameSet.js"></script>
         <script src="js/app/views/GameWinner.js"></script>
         <script src="js/app/views/GameResult.js"></script>
-
         <script src="js/app/appGame.js"></script>
     </body>
 </html>

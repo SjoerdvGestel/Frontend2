@@ -1,4 +1,4 @@
-var Set = Backbone.Model.extend({
+FBEE.Set = Backbone.Model.extend({
 		
 		defaults: {
 			set: 0,
