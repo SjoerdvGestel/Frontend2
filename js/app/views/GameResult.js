@@ -102,7 +102,7 @@ FBEE.GameView = Backbone.View.extend({
 			_.each(this.getWinners(), function (item) {
 				        var option = $("<option/>", {
 				            value: item.toLowerCase(),
-				            text: item.toLowerCase()
+				            text: "Winaar: " + item.toLowerCase()
 				        }).appendTo(htmlString);
 			});
 	    }

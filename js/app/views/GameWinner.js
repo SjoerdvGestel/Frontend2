@@ -23,7 +23,8 @@ FBEE.WinnerView = Backbone.View.extend({
 	},
 
 
-
+	//bereken de Gamewinner op basis van de scores. 
+	//Known error: als 1 team alle sets heeft gewonnen crasht het, Note: dit gedeelte was niet verplicht en is daarom niet verder uitgewerkt
 	renderWinner: function (objectArray){
 		var winner = new Object();
 		var loser = new Object();
