@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Backbone.js Web App</title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" href="css/screen.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form.css" />
+</head>
+<body>
+    <section id="templateWrapper">
+        <header>
+            <h1><span>League:</span>AMSU - 12</h1>
+            <h1><span>Tournament:</span>Threesome</h1>
+        </header>
+
+        <article>
+            <header>
+                <h1>Pool A - Ranking</h1>
+            </header>
+
+            <table id="teamTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <section id="teamFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="wonFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="lostFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="setsWonFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="setsLostFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="setsBalanceFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="pointsWonFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="pointsLostFilter"class="filterWrapper"></section>
+                        </th>
+                        <th>
+                            <section id="pointsBalanceFilter"class="filterWrapper"></section>
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <a href="#" class="headerButton" name="team">Team</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="won" >Won</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="lost">Lost</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="setsWon">Sets won</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="setsLost">Sets lost</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="setsBalance">Sets balance</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="pointsWon">Points won</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="pointsLost">Points lost</a>
+                        </th>
+                        <th>
+                            <a href="#" class="headerButton" name="pointsBalance">Points balance</a>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="teamTableBody">
+
+                    <script id="teamTableTemplate" type="text/template">
+                    <td><%= team %></td>
+                    <td><%= won %></td>
+                    <td><%= lost %></td>
+                    <td><%= setsWon %></td>
+                    <td><%= setsLost %></td>
+                    <td><%= setsBalance %></td>
+                    <td><%= pointsWon %></td>
+                    <td><%= pointsLost %></td>
+                    <td><%= pointsBalance %></td>
+                    <td><a href="#" class="delete">Delete</a></td>
+                    </script>
+                </tbody>
+
+            </table>
+        </article>
+    </section>
+
+    <!-- Libraries -->
+    <script src="js/libs/jquery-1.7.1.min.js"></script>
+    <script src="js/libs/json2.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/libs/underscore.observable.js"></script>
+    <script src="js/libs/backbone-min.js"></script>
+
+    <script src="js/util/prototype.js"></script>
+
+
+    <!-- Application -->
+    <script src="js/app/main.js"></script>
+
+    <script src="js/debug/debug.js"></script>
+    <script src="js/util/utils.js"></script>
+
+    <script src="js/app/models/TeamModel.js"></script>
+    <script src="js/app/collections/PoolCollection.js"></script>
+    <script src="js/app/views/TeamView.js"></script>
+    <script src="js/app/views/PoolView.js"></script>
+
+</body>
+</html>
